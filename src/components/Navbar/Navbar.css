@@ -1,0 +1,61 @@
+.navPers {
+    width: 95%;
+    padding-left: 75px;
+    /* font-family: $fuente; */
+}
+
+a {
+    width: 25%;
+
+}
+
+a:hover {
+    transform: scale(110%);
+}
+
+.btnNav {
+    font-size: 1.3rem;
+    width: auto;
+    background-color: #67b967;
+    border-radius: 10px;
+    border-style: none;
+    color: lightgray;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.438);
+    transition: all 0.5s;
+
+}
+
+.btnNav:hover {
+    background-color: lightgray;
+    color: white;
+    box-shadow: none;
+    transform: scale(110%);
+}
+
+.menu-servicios {
+    background-color: unset;
+    background-clip: unset;
+    border-radius: unset;
+    border: unset;
+
+}
+
+.menu-servicios li a {
+    /* font-family: $fuente; */
+    font-size: 1.3rem;
+    width: auto;
+    background-color: #67b967;
+    border-radius: 10px;
+    border-style: none;
+    color: lightgray;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.438);
+    transition: all 0.5s;
+    
+}
+
+.menu-servicios li a:hover {
+    background-color: lightgray;
+    color: white;
+    box-shadow: none;
+    transform: scale(110%);
+}
