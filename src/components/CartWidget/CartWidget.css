@@ -1,0 +1,14 @@
+.cart {
+    text-decoration: none;
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.3rem;
+    width: auto;
+    background-color: #67b967;
+    border-radius: 10px;
+    border-style: none;
+    color: lightgray;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.438);
+    transition: all 0.5s;
+
+}
