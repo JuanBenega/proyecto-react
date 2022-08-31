@@ -6,6 +6,9 @@
     /* font-family: $fuente; */
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
 .logo {
     width: 20rem;
     transition: all 0.2s;
@@ -16,6 +19,7 @@
 }
 
 .list {
+    font-family: 'Poppins', sans-serif;
     list-style: none;
     display: flex;
     flex-direction: row;
