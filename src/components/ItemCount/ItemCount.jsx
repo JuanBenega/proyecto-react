@@ -39,6 +39,7 @@ const ItemCount = ({ stock, initial }) => {
                                     <div>Cantidad</div>
                                     <button onClick={substract} className='mx-2 px-3'> - </button>
                                 </div>
+                                <p className='mt-2'>Stock disponible: {stock}</p>
                                 <button className='addToCart' onClick={onAdd}>Agregar al carrito</button>
                             </div>
                         </div>
