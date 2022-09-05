@@ -1,11 +1,19 @@
 import './ItemList.css'
+import ItemCount from '../ItemCount/ItemCount';
 
 
-const ItemList = () => {
+
+const ItemList = ({saludo}) => {
+    const stock = 10;
+    const initial=5;
+    
+
     return (
-        <div>
-            <h2 className='title'>Este es el listado de items de mi catálogo</h2>
-        </div>
+        <>
+            <h2 className='title'>{saludo}</h2>
+            <ItemCount stock= {stock} initial= {initial} /> 
+        </>
+
     )
 }
 
