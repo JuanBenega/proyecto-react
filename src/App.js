@@ -1,5 +1,5 @@
 import './App.css';
-import ItemList from './components/ItemList/ItemList';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import Navbar from './components/Navbar/Navbar';
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <ItemList saludo='Este es el listado de items de mi catálogo'/> 
+      <ItemListContainer saludo='Este es el listado de items de mi catálogo'/> 
     </>
   )
 }
