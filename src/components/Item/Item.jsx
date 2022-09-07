@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 const Item = ({ name, img, price }) => {
     return (
         <>
-            <div className="col-3">
+            <div className="col-3 my-3">
                 <div className="card d-flex text-end border-dark h-100 mx-5">
                     <img src={img} className="card-img-top" alt={name} />
                     <div className="card-body">

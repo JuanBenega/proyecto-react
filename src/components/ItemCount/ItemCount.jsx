@@ -24,7 +24,6 @@ const ItemCount = ({ stock, initial }) => {
         <>
             <div className="container-fluid">
                 <div className='row'>
-                    <div className="col-5"></div>
                     <div className="col-2 counter">
                         <div className="card">
                             <h4 className="card-header">
@@ -44,7 +43,6 @@ const ItemCount = ({ stock, initial }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-5"></div>
                 </div>
             </div>
 
