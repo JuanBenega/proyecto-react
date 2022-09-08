@@ -3,6 +3,7 @@ import ItemCount from '../ItemCount/ItemCount';
 import ItemList from '../ItemList/ItemList';
 import data from '../mockData';
 import { useState, useEffect } from "react";
+import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer';
 
 
 const ItemListContainer = ({ saludo }) => {
@@ -31,6 +32,7 @@ const ItemListContainer = ({ saludo }) => {
             <h2 className='title'>{saludo}</h2>
             <ItemCount stock={stock} initial={initial} />
             <ItemList productList={productList} />
+            <ItemDetailContainer />
         </>
 
     )
