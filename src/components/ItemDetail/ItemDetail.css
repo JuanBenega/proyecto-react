@@ -1,6 +1,9 @@
-.detail {
-    border: solid;
-    border-color: black;
-    border-width: 2px;
-    border-radius: 10px;
+h2, h3, h4 {
+    font-weight: bold;
+}
+
+.side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }

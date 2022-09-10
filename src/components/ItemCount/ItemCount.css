@@ -1,6 +1,14 @@
+.buyCard {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
 .counter {
     font-family: 'Poppins', sans-serif;
     text-align: center;
+    border: none;
+    background-color: transparent;
 }
 
 .buttons {

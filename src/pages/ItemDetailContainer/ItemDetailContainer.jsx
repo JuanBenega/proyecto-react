@@ -1,3 +1,4 @@
+import './ItemDetailContainer.css';
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
 import data from '../../components/mockData';
 import { useState, useEffect } from "react";
@@ -31,12 +32,12 @@ const ItemDetailContainer = () => {
                 <div className="row">
                     <div className="col-md-2"></div>
                     <div className="col-md-8 my-3 p-2 detail">
-                        <h2>Detalle de Item</h2>
+                        <h2 className='text-center'>Detalle de Item</h2>
                         <ItemDetail
-                            name={item.nombre}
-                            description={item.descripcion}
+                            name={item.name}
+                            description={item.description}
                             img={item.img}
-                            price={item.precio}
+                            price={item.price}
                         />
                     </div>
                     <div className="col-md-2"></div>

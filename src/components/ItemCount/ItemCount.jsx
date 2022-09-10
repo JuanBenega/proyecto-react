@@ -22,29 +22,25 @@ const ItemCount = ({ stock, initial }) => {
 
     return (
         <>
-            <div className="container-fluid">
                 <div className='row'>
-                    <div className="col-2 counter">
-                        <div className="card">
-                            <h4 className="card-header">
+                    <div className="card counter">
+                            <h4 className="card-header  text-center">
                                 Comprar
                             </h4>
-                            <div className="card-body">
-                                <h5 className="card-text">
+                            <div className="card">
+                                <h5 className="card-text text-center">
                                     {items}
                                 </h5>
-                                <div className='d-flex justify-content buttons'>
-                                    <button onClick={add} className='mx-2 px-3'> + </button>
+                                <div className='buttons'>
+                                    <button onClick={add} className='mx-2 px-3 rounded border border-1'> + </button>
                                     <div>Cantidad</div>
-                                    <button onClick={substract} className='mx-2 px-3'> - </button>
+                                    <button onClick={substract} className='mx-2 px-3 rounded border border-1'> - </button>
                                 </div>
-                                <p className='mt-2'>Stock disponible: {stock}</p>
+                                {/* <p className='mt-2'>Stock disponible: {stock}</p> */}
                                 <button className='addToCart' onClick={onAdd}>Agregar al carrito</button>
                             </div>
-                        </div>
                     </div>
                 </div>
-            </div>
         </>
     )
 }

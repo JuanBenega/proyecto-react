@@ -14,65 +14,74 @@ const data =
         {
             item: '1',
             img: shampooSolido,
-            nombre: 'Shampoo sólido',
-            descripcion: 'Descripción de Shampoo sólido',
-            precio: 500
+            name: 'Shampoo sólido',
+            description: 'Descripción de Shampoo sólido',
+            price: 500,
+            category: 'hair'
         },
         {
             item: '2',
             img: cremaFacial,
-            nombre: 'Crema facial',
-            descripcion: 'Descripción de Crema facial',
-            precio: 750
+            name: 'Crema facial',
+            description: 'Descripción de Crema facial',
+            price: 750,
+            category: 'body'
         },
         {
             item: '3',
             img: cremaCorporal,
-            nombre: 'Crema corporal',
-            descripcion: 'Descripción de Crema corporal',
-            precio: 1200
+            name: 'Crema corporal',
+            description: 'Descripción de Crema corporal',
+            price: 1200,
+            category: 'body'
         },
         {
             item: '4',
             img: shampooLiquido,
-            nombre: 'Shampoo líquido',
-            descripcion: 'Descripción de Shampoo líquido',
-            precio: 500
+            name: 'Shampoo líquido',
+            description: 'Descripción de Shampoo líquido',
+            price: 500,
+            category: 'hair'
         },
         {
             item: '5',
             img: acondicionador,
-            nombre: 'Crema de anjuague',
-            descripcion: 'Descripción de Crema de anjuague',
-            precio: 750
+            name: 'Crema de anjuague',
+            description: 'Descripción de Crema de anjuague',
+            price: 750,
+            category: 'hair'
         },
         {
             item: '6',
             img: jabonNatural,
-            nombre: 'Jabón natural',
-            descripcion: 'Descripción de Jabón natural',
-            precio: 800
+            name: 'Jabón natural',
+            description: 'Descripción de Jabón natural',
+            price: 800,
+            category: 'body'
         },
         {
             item: '7',
             img: desodSolido,
-            nombre: 'Desodorante',
-            descripcion: 'Descripción de Desodorante',
-            precio: 1050
+            name: 'Desodorante',
+            description: 'Descripción de Desodorante',
+            price: 1050,
+            category: 'body'
         },
         {
             item: '8',
             img: detrifico,
-            nombre: 'Dentrífico',
-            descripcion: 'Descripción de Dentrífico',
-            precio: 950
+            name: 'Dentrífico',
+            description: 'Descripción de Dentrífico',
+            price: 950,
+            category: 'body'
         },
         {
             item: '9',
             img: acondSolido,
-            nombre: 'Crema de enjuague sólida',
-            descripcion: 'Descripción de Crema de enjuague sólida',
-            precio: 1150
+            name: 'Crema de enjuague sólida',
+            description: 'Descripción de Crema de enjuague sólida',
+            price: 1150,
+            category: 'hair'
 
         }
     ];
