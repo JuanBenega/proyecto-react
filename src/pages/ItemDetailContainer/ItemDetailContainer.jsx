@@ -1,11 +1,13 @@
-import ItemDetail from "../ItemDetail/ItemDetail";
-import data from '../mockData';
+import ItemDetail from "../../components/ItemDetail/ItemDetail";
+import data from '../../components/mockData';
 import { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
+import { useParams } from "react-router-dom";
 
 
 
 const ItemDetailContainer = () => {
+    const { id } = useParams();
     const [item, setItem] = useState([])
 
     useEffect(() => {
@@ -19,7 +21,8 @@ const ItemDetailContainer = () => {
 
     const getItem = new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(data);
+            let filteredData = data.filter(product => product.item === id);
+            resolve(filteredData);
         }, 2000);
     })
     return (

@@ -1,12 +1,11 @@
 import './ItemListContainer.css';
-import ItemCount from '../ItemCount/ItemCount';
-import ItemList from '../ItemList/ItemList';
-import data from '../mockData';
+import ItemCount from '../../components/ItemCount/ItemCount';
+import ItemList from '../../components/ItemList/ItemList';
+import data from '../../components/mockData';
 import { useState, useEffect } from "react";
-import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer';
 
 
-const ItemListContainer = ({ saludo }) => {
+const ItemListContainer = () => {
     const stock = 10;
     const initial = 5;
 
@@ -29,10 +28,9 @@ const ItemListContainer = ({ saludo }) => {
 
     return (
         <>
-            <h2 className='title'>{saludo}</h2>
-            <ItemCount stock={stock} initial={initial} />
+            {/* <ItemCount stock={stock} initial={initial} /> */}
             <ItemList productList={productList} />
-            <ItemDetailContainer />
+            
         </>
 
     )

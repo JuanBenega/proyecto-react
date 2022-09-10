@@ -3,7 +3,6 @@
     background-image: linear-gradient(to top, white, #aa79b3);
     display: flex;
     justify-content: space-between;
-    /* font-family: $fuente; */
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');

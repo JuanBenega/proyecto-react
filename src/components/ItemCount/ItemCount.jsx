@@ -1,24 +1,24 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 import 'bootstrap/dist/css/bootstrap.css';
-import './ItemCount.css'
+import './ItemCount.css';
 
 
 const ItemCount = ({ stock, initial }) => {
 
-    const [items, setItems] = useState(initial)
+    const [items, setItems] = useState(initial);
 
     const add = () => {
         items < stock ? setItems(items + 1) : alert('No hay más estock disponible');
     };
 
     const substract = () => {
-        items > 0 && setItems(items - 1);
+        items > 0 && setItems(items - 1)
     };
 
     const onAdd = () => {
         items > 0 && alert(`Se agregaron ${items} items al carrito`)
-    }
+    };
 
     return (
         <>
@@ -45,9 +45,8 @@ const ItemCount = ({ stock, initial }) => {
                     </div>
                 </div>
             </div>
-
         </>
     )
 }
 
-export default ItemCount
+export default ItemCount;
