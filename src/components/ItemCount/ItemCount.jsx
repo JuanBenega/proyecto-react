@@ -1,18 +1,14 @@
-import { useState } from "react";
-
 import 'bootstrap/dist/css/bootstrap.css';
 import './ItemCount.css';
 
 
-const ItemCount = ({ stock, initial }) => {
-
-    const [items, setItems] = useState(initial);
-
-    const add = () => {
+const ItemCount = ({ stock, items, setItems }) => {
+ 
+    const addItem = () => {
         items < stock ? setItems(items + 1) : alert('No hay más estock disponible');
     };
 
-    const substract = () => {
+    const removeItem = () => {
         items > 0 && setItems(items - 1)
     };
 
@@ -32,12 +28,11 @@ const ItemCount = ({ stock, initial }) => {
                                     {items}
                                 </h5>
                                 <div className='buttons'>
-                                    <button onClick={add} className='mx-2 px-3 rounded border border-1'> + </button>
+                                    <button onClick={addItem} className='mx-2 px-3 rounded border border-1'> + </button>
                                     <div>Cantidad</div>
-                                    <button onClick={substract} className='mx-2 px-3 rounded border border-1'> - </button>
+                                    <button onClick={removeItem} className='mx-2 px-3 rounded border border-1'> - </button>
                                 </div>
                                 {/* <p className='mt-2'>Stock disponible: {stock}</p> */}
-                                <button className='addToCart' onClick={onAdd}>Agregar al carrito</button>
                             </div>
                     </div>
                 </div>

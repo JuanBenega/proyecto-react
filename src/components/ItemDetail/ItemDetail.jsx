@@ -1,10 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import ItemCount from '../ItemCount/ItemCount';
 import './ItemDetail.css'
+import { useState } from 'react';
+import { NavLink } from "react-router-dom";
+
 
 const ItemDetail = ({ name, description, img, price }) => {
     const stock = 10;
     const initial = 1;
+
+    const [items, setItems] = useState(initial);
 
     return (
         <>
@@ -19,8 +24,8 @@ const ItemDetail = ({ name, description, img, price }) => {
                         <p>{description}</p>
                         <h3 className='d-flex justify-content-end'>${price}</h3>
                     </div>
-                        <ItemCount stock={stock} initial={initial} />
-
+                    <ItemCount stock={stock} items={items} setItems={setItems} />
+                    <NavLink className='addToCart' to={'/cart'}>Agregar al carrito</NavLink>
                 </div>
             </div>
         </>

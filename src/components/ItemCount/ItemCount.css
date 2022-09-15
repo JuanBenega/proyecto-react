@@ -18,19 +18,6 @@
 }
 
 
-.addToCart {
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.8em;
-    margin: 1em;
-    padding: 0.5em 1em;
-    background-color: #67b967;
-    border-radius: 10px;
-    border-style: none;
-    color: lightgray;
-    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.438);
-    transition: all 0.5s;
-}
-
 .addToCart:hover {
     background-color: lightgray;
     color: white;
