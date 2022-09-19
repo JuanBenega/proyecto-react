@@ -1,5 +1,5 @@
 .navProp {
-    padding-left: 3rem;
+    padding-left: 2rem;
     background-image: linear-gradient(to top, white, #aa79b3);
     display: flex;
     justify-content: space-between;
@@ -7,7 +7,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-
+.container {
+    max-width: 100%;
+}
 .logo {
     width: 15rem;
     transition: all 0.2s;
