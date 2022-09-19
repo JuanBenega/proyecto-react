@@ -1,8 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import ItemCount from '../ItemCount/ItemCount';
 import './ItemDetail.css'
-import { useState } from 'react';
-import { NavLink } from "react-router-dom";
+import { useState, useContext } from 'react';
+// import { NavLink } from "react-router-dom";
+import { CartContext } from '../../context/CartContext';
+// import { Button } from 'bootstrap';
 
 
 const ItemDetail = ({ name, description, img, price }) => {
@@ -10,6 +12,13 @@ const ItemDetail = ({ name, description, img, price }) => {
     const initial = 1;
 
     const [items, setItems] = useState(initial);
+    const { addToCart } = useContext(CartContext);
+
+    // const addToCart = (name, items) => {
+
+    //     setCart(cart.concat({name: name, quantity: items}));
+        
+    // }
 
     return (
         <>
@@ -25,7 +34,9 @@ const ItemDetail = ({ name, description, img, price }) => {
                         <h3 className='d-flex justify-content-end'>${price}</h3>
                     </div>
                     <ItemCount stock={stock} items={items} setItems={setItems} />
-                    <NavLink className='addToCart' to={'/cart'}>Agregar al carrito</NavLink>
+                    {/* <NavLink className='addToCart' to={'/cart'}>Agregar al carrito</NavLink> */}
+                    <button className='addToCart' onClick={()=>addToCart(name, items)}>Agregar al carrito</button>
+            
                 </div>
             </div>
         </>
