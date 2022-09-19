@@ -1,8 +1,6 @@
 .navProp {
     padding-left: 2rem;
     background-image: linear-gradient(to top, white, #aa79b3);
-    display: flex;
-    justify-content: space-between;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
@@ -10,6 +8,7 @@
 .container {
     max-width: 100%;
 }
+
 .logo {
     width: 15rem;
     transition: all 0.2s;
@@ -21,9 +20,6 @@
 
 .list {
     font-family: 'Poppins', sans-serif;
-    list-style: none;
-    display: flex;
-    flex-direction: row;
     margin-right: 3rem;
     align-items: center;
 }
