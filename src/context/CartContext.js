@@ -6,7 +6,7 @@ const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
 
 
-    const addToCart = (name, items, price, img) => {
+    const addToCart = (name, items, price, img, item) => {
         let itemExist = false;
         if (items > 0) {
         for (const iterator of cart) {
@@ -16,16 +16,29 @@ const CartProvider = ({ children }) => {
         }
         itemExist
             ? alert('este producto ya existe en el carrito')
-            : setCart(cart.concat({ name: name, quantity: items, price: price, img: img}));
+            : setCart(cart.concat({ item, name, quantity: items, price, img}));
         }
     }
 
+    const removeItem = (item) => {
+        let listItem=[];
+        for (const prod of cart) {
+            prod.item !== item && listItem.push(prod)
+        }
+        setCart(listItem);
+    }
 
+    // const restToCart = (item) => {
+    //     let itemToRest = cart[cart.IndexOff(item)];
+    //     if (itemToRest>0) {
+
+    //     }
+    // }
 
 
 
     return (
-        <CartContext.Provider value={{ addToCart, cart }}>
+        <CartContext.Provider value={{ addToCart, cart, removeItem }}>
             {children}
         </CartContext.Provider>
     );

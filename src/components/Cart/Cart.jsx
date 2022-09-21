@@ -5,11 +5,11 @@ import './Cart.css'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Image from 'react-bootstrap/Image'
 
 
 const Cart = () => {
-  const { cart } = useContext(CartContext)
-
+  const { cart, addtoCart, removeItem } = useContext(CartContext)
 
   return (
     <>
@@ -20,10 +20,12 @@ const Cart = () => {
             <Row className="itemCart" >
               <h4>{element.name}</h4>
               <Col md={2}>
+                {/* <button className='btnCart' onClick={()=> }> + </button> */}
                 <h5>{element.quantity}</h5>
+                {/* <button className='btnCart'> - </button> */}
               </Col>
               <Col md={4}>
-                <img src={element.img} className="card-img-top" alt={element.name} />
+                <Image src={element.img} fluid rounded thumbnail alt={element.name} />
               </Col>
               <Col md={2}>
                 <h5>Precio: ${element.price}</h5>
@@ -32,7 +34,7 @@ const Cart = () => {
                 <h5>Total: ${element.price*element.quantity}</h5>
               </Col>
               <Col md={2}>
-                <button>Eliminar del carrito</button>
+                <button className='btnCart' onClick={()=>removeItem(element.item)}>Eliminar del carrito</button>
               </Col>
             </Row>
           </Container>

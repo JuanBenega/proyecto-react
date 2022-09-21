@@ -26,6 +26,7 @@ const ItemDetailContainer = () => {
             resolve(filteredData);
         }, 2000);
     })
+
     return (
         <>
             <div className="container-fluid">
@@ -38,6 +39,7 @@ const ItemDetailContainer = () => {
                             description={item.description}
                             img={item.img}
                             price={item.price}
+                            item={item.item}
                         />
                     </div>
                     <div className="col-md-2"></div>
