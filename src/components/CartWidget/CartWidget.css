@@ -11,5 +11,8 @@
     color: black;
     box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.438);
     transition: all 0.5s;
+}
 
+.cart:hover {
+    color: white;
 }

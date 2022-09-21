@@ -26,7 +26,7 @@ const ItemDetail = ({ name, description, img, price }) => {
                         <h3 className='d-flex justify-content-end'>${price}</h3>
                     </div>
                     <ItemCount stock={stock} items={items} setItems={setItems} />
-                    <button className='addToCart' onClick={()=>addToCart(name, items, price)}>Agregar al carrito</button>
+                    <button className='addToCart' onClick={()=>addToCart(name, items, price, img)}>Agregar al carrito</button>
             
                 </div>
             </div>

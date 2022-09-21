@@ -6,7 +6,7 @@ const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
 
 
-    const addToCart = (name, items, price) => {
+    const addToCart = (name, items, price, img) => {
         let itemExist = false;
         if (items > 0) {
         for (const iterator of cart) {
@@ -16,7 +16,7 @@ const CartProvider = ({ children }) => {
         }
         itemExist
             ? alert('este producto ya existe en el carrito')
-            : setCart(cart.concat({ name: name, quantity: items, price: price }));
+            : setCart(cart.concat({ name: name, quantity: items, price: price, img: img}));
         }
     }
 
