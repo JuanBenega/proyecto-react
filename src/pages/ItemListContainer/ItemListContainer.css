@@ -6,3 +6,9 @@
     display: flex;
     justify-content: center;
 }
+
+.loader {
+    margin: 12rem 0;
+    display: flex;
+    justify-content: center;
+}
