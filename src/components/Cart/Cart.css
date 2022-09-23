@@ -1,0 +1,46 @@
+.cartContainer {
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+.btnCart {
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    margin: 0.5em;
+    padding: 0.5em 1em;
+    background-color: #67b967;
+    border-radius: 10px;
+    border-style: none;
+    color: lightgray;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.438);
+    transition: all 0.5s;
+}
+
+.btnCart:hover {
+    background-color: lightgray;
+    color: white;
+    box-shadow: none;
+    transform: scale(110%);
+}
+
+.itemCart {
+    margin: 1rem 0;
+    border: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.imgCart {
+    width: 15rem;
+}
+
+.cartContent {
+    display: flex;
+    justify-content: center;
+}

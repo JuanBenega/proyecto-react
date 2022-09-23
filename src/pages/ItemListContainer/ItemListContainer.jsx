@@ -3,18 +3,20 @@ import ItemList from '../../components/ItemList/ItemList';
 import data from '../../components/mockData';
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
+import  RingLoader  from "react-spinners/RingLoader";
 
 
 
 const ItemListContainer = () => {
 
-
+    const [load, setLoad] = useState(false);
     const [productList, setProductList] = useState([]);
     const { catId } = useParams();
 
     useEffect(() => {
         getProducts.then((response) => {
-            setProductList(response)
+            setProductList(response);
+            setLoad(true);
         })
             .catch((error) => {
                 console.log(error);
@@ -32,7 +34,11 @@ const ItemListContainer = () => {
 
     return (
         <>
-            <ItemList productList={productList} />           
+            {load === false
+                ? <div className="loader"><RingLoader color="#67b967" size={200} /></div>
+                : <ItemList productList={productList} />
+            }
+                       
         </>
 
     )

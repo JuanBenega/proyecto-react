@@ -8,8 +8,18 @@
     background-color: #67b967;
     border-radius: 10px;
     border-style: none;
-    color: black;
+    color: lightgray;
     box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.438);
     transition: all 0.5s;
+}
 
+.cart:hover {
+    background-color: lightgray;
+    color: white;
+    box-shadow: none;
+    transform: scale(110%);
+}
+
+.hide {
+    display: none;
 }

@@ -5,12 +5,13 @@ import { useState, useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 
 
-const ItemDetail = ({ name, description, img, price }) => {
+const ItemDetail = ({ name, description, img, price, item }) => {
     const stock = 10;
     const initial = 0;
 
     const [items, setItems] = useState(initial);
     const { addToCart } = useContext(CartContext);
+
 
     return (
         <>
@@ -26,7 +27,7 @@ const ItemDetail = ({ name, description, img, price }) => {
                         <h3 className='d-flex justify-content-end'>${price}</h3>
                     </div>
                     <ItemCount stock={stock} items={items} setItems={setItems} />
-                    <button className='addToCart' onClick={()=>addToCart(name, items, price)}>Agregar al carrito</button>
+                    <button className='addToCart' onClick={()=>addToCart(name, items, price, img, item)}>Agregar al carrito</button>
             
                 </div>
             </div>
