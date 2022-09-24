@@ -1,34 +1,31 @@
 import './ItemDetailContainer.css';
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
-import data from '../../components/mockData';
 import { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { useParams } from "react-router-dom";
-import  RingLoader  from "react-spinners/RingLoader";
+import RingLoader from "react-spinners/RingLoader";
+import { getFirestore, doc, getDoc } from 'firebase/firestore'
 
 
 
 const ItemDetailContainer = () => {
+
+
+
+
     const { id } = useParams();
     const [item, setItem] = useState([])
     const [load, setLoad] = useState(false)
 
     useEffect(() => {
-        getItem.then((response) => {
-            setItem(response[0]);
+        const db = getFirestore();
+        const queryDoc = doc(db, 'products', id)
+        getDoc(queryDoc).then((res) => {
+            setItem(res.data());  // con esto me devuelve toda la info que necesito del producto elegido
             setLoad(true);
         })
-            .catch((error) => {
-                console.log(error);
-            })
+            .catch(err => console.log(err));
     }, [])
-
-    const getItem = new Promise((resolve, reject) => {
-        setTimeout(() => {
-            let filteredData = data.filter(product => product.item === id);
-            resolve(filteredData);
-        }, 2000);
-    })
 
     return (
         <>
