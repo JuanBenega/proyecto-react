@@ -6,6 +6,36 @@ h1 {
     font-weight: bold;
 }
 
+.emptyCart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.btnProducts {
+    text-decoration: none;
+    margin: 2rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.3rem;
+    background-color: #67b967;
+    border-radius: 10px;
+    border-style: none;
+    color: lightgray;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.438);
+    transition: all 0.5s;
+    width: auto;
+}
+
+.btnProducts:hover  {
+    background-color: lightgray;
+    color: white;
+    box-shadow: none;
+    transform: scale(110%);
+}
+
 .btnCart {
     text-decoration: none;
     text-align: center;
@@ -21,7 +51,7 @@ h1 {
     transition: all 0.5s;
 }
 
-.btnCart:hover {
+.btnCart:hover  {
     background-color: lightgray;
     color: white;
     box-shadow: none;
@@ -37,10 +67,11 @@ h1 {
 }
 
 .imgCart {
-    width: 15rem;
+    width: 20rem;
 }
 
 .cartContent {
     display: flex;
     justify-content: center;
 }
+

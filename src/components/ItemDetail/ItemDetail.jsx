@@ -12,7 +12,6 @@ const ItemDetail = ({ name, description, img, price, item }) => {
     const [items, setItems] = useState(initial);
     const { addToCart } = useContext(CartContext);
 
-
     return (
         <>
             <div className="row">

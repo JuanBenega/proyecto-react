@@ -21,11 +21,7 @@ const CartProvider = ({ children }) => {
     }
 
     const removeItem = (item) => {
-        let listItem=[];
-        for (const prod of cart) {
-            prod.item !== item && listItem.push(prod)
-        }
-        setCart(listItem);
+        setCart(cart.filter((element)=> element.item !== item));
     }
 
     // const restToCart = (item) => {

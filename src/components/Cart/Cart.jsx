@@ -13,23 +13,25 @@ const Cart = () => {
   const { cart, removeItem } = useContext(CartContext)
 
   return (
-    <div className='cartContainer'>
+    <Container className='cartContainer'>
       <h1>Carrito de compras</h1>
       {cart.length === 0
-        ? <> 
+        ? <div className='emptyCart'> 
           <h3>El carrito está vacío, elija algún producto para comprar</h3>
-          <NavLink to={'/'} className="nav-link btnNav">Productos</NavLink>
-          </>
+          <NavLink to={'/'} className="btnProducts">Productos</NavLink>
+          <br />
+          <br />
+          </div>
         : cart.map((element) => (
                      <Container key={element.item}>
                        <Row className="itemCart" >
                          <h4>{element.name}</h4>
-                         <Col md={2} className='cartContent'>
+                         <Col md={1} className='cartContent'>
                            {/* <button className='btnCart' onClick={()=> }> + </button> */}
                            <h5>{element.quantity}</h5>
                            {/* <button className='btnCart'> - </button> */}
                          </Col>
-                         <Col md={4} className='cartContent'>
+                         <Col md={5} className='cartContent'>
                            <Image src={element.img} fluid rounded thumbnail alt={element.name} className='imgCart'/>
                          </Col>
                          <Col md={2} className='cartContent'>
@@ -45,7 +47,7 @@ const Cart = () => {
                      </Container>
                    ))
       }
-    </div>
+    </Container>
 
 
   )

@@ -41,7 +41,7 @@ const ItemDetailContainer = () => {
                                 description={item.description}
                                 img={item.img}
                                 price={item.price}
-                                item={item.item}
+                                item={id}
                             />
                         </div>
                         <div className="col-md-2"></div>
