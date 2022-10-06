@@ -4,6 +4,7 @@
 
 h1 {
     font-weight: bold;
+    padding-left: 5rem;
 }
 
 .emptyCart {
@@ -60,6 +61,7 @@ h1 {
 
 .itemCart {
     margin: 1rem 0;
+    padding: 0.5rem;
     border: solid;
     border-width: 2px;
     border-radius: 10px;
@@ -75,3 +77,8 @@ h1 {
     justify-content: center;
 }
 
+.purchase {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 5rem;
+}
