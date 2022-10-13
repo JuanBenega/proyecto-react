@@ -5,15 +5,10 @@ import { CartContext } from '../../context/CartContext';
 import { NavLink } from 'react-router-dom';
 
 const CartWidget = () => {
-    const { cart } = useContext(CartContext);
-    let artsAtCart = 0;
-    cart.forEach(element => {
-        artsAtCart += element.quantity;
-    });
+    const { cart, artsAtCart } = useContext(CartContext);
+    
     return (
-        <>
             <NavLink className={`${cart.length === 0 ? 'hide' : ''} cart`} to={'cart'}><img src={Cart} alt="carrito" /> {artsAtCart}</NavLink>
-        </>
     )
 }
 

@@ -1,18 +1,26 @@
-import "bootstrap/dist/css/bootstrap.css";
 import { CartContext } from "../../context/CartContext";
 import { useContext, useState, useEffect } from "react";
 import "./Cart.css";
+import "bootstrap/dist/css/bootstrap.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import Image from "react-bootstrap/Image";
 import { NavLink } from "react-router-dom";
-import { collection, addDoc, getFirestore } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  getFirestore,
+  setDoc,
+  doc,
+} from "firebase/firestore";
 import moment from "moment";
 
 const Cart = () => {
-  const { cart, removeItem, clearCart } = useContext(CartContext);
+  const db = getFirestore();
+  const { cart, removeItem, clearCart } =
+    useContext(CartContext);
   const [showModal, setShowModal] = useState(false);
   const [order, setOrder] = useState({
     buyer: {
@@ -25,6 +33,7 @@ const Cart = () => {
     date: moment().format(),
   });
 
+  // Actualizo la orden a crear según se modifica el contenido del carrito
   useEffect(() => {
     setOrder((currentOrder) => {
       return {
@@ -36,23 +45,42 @@ const Cart = () => {
     });
   }, [cart]);
 
+  // Manejo de la visibilidad del MODAL
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
 
+  // Creación de la orden de compra
   const createOrder = () => {
-    const db = getFirestore();
-    const query = collection(db, "orders");
-    addDoc(query, order)
-      .then(({ id }) => {
-        alert(
-          `Felicidades por tu compra, te enviaremos los datos de facturación por Mail.\nTu ID de compra es ${id}`
-        )
-        clearCart();
-        setShowModal(false);
-  })
-      .catch(() => alert("Hubo un problema con su compra"));
+    const queryOrders = collection(db, "orders");
+    if (order.buyer.name === "") {
+      alert("Debe completar todos los campos solicitados");
+    } else if (order.buyer.email === "") {
+      alert("Debe completar todos los campos solicitados");
+    } else if (order.buyer.phone === 0) {
+      alert("Debe completar todos los campos solicitados");
+    } else {
+
+      // Actualizo el stock en la base de datos de firebase
+      cart.forEach((element) => {
+        const queryDoc = doc(db, "products", element.item);
+        let newStock = element.stock - element.quantity;
+        setDoc(queryDoc, { stock: newStock }, { merge: true });
+      });
+
+      // Creo la orden de compra en firebase
+      addDoc(queryOrders, order)
+        .then(({ id }) => {
+          alert(
+            `Felicidades por tu compra, te enviaremos los datos de facturación por Mail.\nTu ID de compra es ${id}`
+          );
+          clearCart();
+          setShowModal(false);
+        })
+        .catch(() => alert("Hubo un problema con su compra"));
+    }
   };
 
+  // Manejo el cambio de los inputs en el form de la orden
   const handleOnChange = (e) => {
     setOrder({
       ...order,
@@ -64,7 +92,7 @@ const Cart = () => {
   };
 
   return (
-    <Container className="cartContainer">
+    <Container fluid className="cartContainer">
       <h1>Carrito de compras</h1>
       {cart.length === 0 ? (
         <div className="emptyCart">
@@ -77,13 +105,11 @@ const Cart = () => {
         </div>
       ) : (
         cart.map((element) => (
-          <Container key={element.item}>
+          <Container fluid key={element.item}>
             <Row className="itemCart">
               <h4>{element.name}</h4>
               <Col md={1} className="cartContent">
-                {/* <button className='btnCart' onClick={()=> }> + </button> */}
                 <h5>{element.quantity}</h5>
-                {/* <button className='btnCart'> - </button> */}
               </Col>
               <Col md={5} className="cartContent">
                 <Image
@@ -125,43 +151,49 @@ const Cart = () => {
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        className="modalOrder"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Finalizar Compra</Modal.Title>
+          <Modal.Title>
+            <h1>Finalizar Compra</h1>
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <h2>¡¡¡Muchas gracias por tu compra!!!</h2>
-          <h4>
-            Por favor completá los siguientes datos para coordinar la entrega
-          </h4>
-          <label>Nombre y Apellido</label>
-          <input
-            name="name"
-            type="text"
-            value={order.buyer.name}
-            onChange={handleOnChange}
-          />
-          <label>Teléfono</label>
-          <input
-            name="phone"
-            type="number"
-            value={order.buyer.phone}
-            onChange={handleOnChange}
-          />
-          <label>Email</label>
-          <input
-            name="email"
-            type="email"
-            value={order.buyer.email}
-            onChange={handleOnChange}
-          />
+          <h4>Por favor completá los datos para coordinar la entrega</h4>
+          <Container fluid className="modalForm">
+            <label>Nombre y Apellido</label>
+            <input
+              name="name"
+              type="text"
+              value={order.buyer.name}
+              onChange={handleOnChange}
+              className="modalInput"
+            />
+            <label>Teléfono</label>
+            <input
+              name="phone"
+              type="number"
+              value={order.buyer.phone}
+              onChange={handleOnChange}
+              className="modalInput"
+            />
+            <label>Email</label>
+            <input
+              name="email"
+              type="email"
+              value={order.buyer.email}
+              onChange={handleOnChange}
+              className="modalInput"
+            />
+          </Container>
         </Modal.Body>
         <Modal.Footer>
-          <button onClick={handleCloseModal} className="btnProducts">
-            Close
+          <button onClick={handleCloseModal} className="btnProducts btnCancel">
+            Cancelar
           </button>
           <button onClick={createOrder} className="btnProducts">
-            Save Changes
+            Comprar
           </button>
         </Modal.Footer>
       </Modal>

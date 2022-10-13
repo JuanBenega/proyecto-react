@@ -1,17 +1,17 @@
 import './ItemDetailContainer.css';
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
 import { useState, useEffect } from "react";
-import 'bootstrap/dist/css/bootstrap.css';
 import { useParams } from "react-router-dom";
 import RingLoader from "react-spinners/RingLoader";
 import { getFirestore, doc, getDoc } from 'firebase/firestore'
+import 'bootstrap/dist/css/bootstrap.css';
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 
 
 const ItemDetailContainer = () => {
-
-
-
 
     const { id } = useParams();
     const [item, setItem] = useState([])
@@ -31,10 +31,10 @@ const ItemDetailContainer = () => {
         <>
             {load === false
                 ? <div className="loader"><RingLoader color="#67b967" size={200} /></div>
-                : <div className="container-fluid">
-                    <div className="row my-5">
-                        <div className="col-md-2"></div>
-                        <div className="col-md-8 my-3 p-2 detail">
+                : <Container fluid>
+                    <Row className="my-5">
+                        <Col md={2}></Col>
+                        <Col md={8} className="my-3 p-2 detail">
                             <h2 className='text-center'>Detalle de Item</h2>
                             <ItemDetail
                                 name={item.name}
@@ -42,11 +42,12 @@ const ItemDetailContainer = () => {
                                 img={item.img}
                                 price={item.price}
                                 item={id}
+                                stock={item.stock}
                             />
-                        </div>
-                        <div className="col-md-2"></div>
-                    </div>
-                </div>
+                        </Col>
+                        <Col md={2}></Col>
+                    </Row>
+                </Container>
             }
         </>
     )
