@@ -9,14 +9,13 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-
-
 const ItemDetailContainer = () => {
 
     const { id } = useParams();
     const [item, setItem] = useState([])
     const [load, setLoad] = useState(false)
 
+    // Conexión a firebase y llamada a un producto de la colección
     useEffect(() => {
         const db = getFirestore();
         const queryDoc = doc(db, 'products', id)

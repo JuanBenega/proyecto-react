@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import RingLoader from "react-spinners/RingLoader";
 import { getFirestore, getDocs, collection } from 'firebase/firestore'
 
-
 const ItemListContainer = () => {
 
     const [load, setLoad] = useState(false);
@@ -18,15 +17,15 @@ const ItemListContainer = () => {
         const querySnapshot = collection(db, 'products');
         getDocs(querySnapshot).then((res) => {
             const data = res.docs.map((doc) => {
-                return { item: doc.id, ...doc.data() } // con esto me devuelve toda la info de la coleccion que llamé de firebase
+                return { item: doc.id, ...doc.data() } // con esto me devuelve toda la info de la colección
             });
-            let filteredData = data.filter(product => product.category === catId);
+            let filteredData = data.filter(product => product.category === catId); // filtro los productos por categoría
             catId
                 ? setProductList(filteredData)
                 : setProductList(data)
             setLoad(true);
         })
-        .catch (err => console.log (err));
+            .catch(err => console.log(err));
     }, [catId]);
 
     return (
@@ -35,9 +34,7 @@ const ItemListContainer = () => {
                 ? <div className="loader"><RingLoader color="#67b967" size={200} /></div>
                 : <ItemList productList={productList} />
             }
-
         </>
-
     )
 }
 

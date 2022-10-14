@@ -6,8 +6,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-
-
 const ItemList = ({ productList }) => {
     return (
         <Container fluid>
@@ -17,7 +15,7 @@ const ItemList = ({ productList }) => {
                     <Row className="d-flex justify-content-arround">
 
                         {
-                            productList.map((product) => 
+                            productList.map((product) =>
                                 <Col md={4} className='my-3 styleContainer' key={product.item}>
                                     <NavLink
                                         to={'/detail/' + product.item}
