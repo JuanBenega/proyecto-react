@@ -2,8 +2,6 @@ import './Item.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import Card from 'react-bootstrap/Card';
 
-
-
 const Item = ({ name, img, price }) => {
     return (
         <Card className="text-end border-dark h-100 styleItem">

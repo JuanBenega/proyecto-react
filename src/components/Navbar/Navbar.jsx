@@ -7,8 +7,6 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-
-
 const Navb = () => {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="navProp">
@@ -24,7 +22,6 @@ const Navb = () => {
                         <NavLink to={'/'} className="nav-link btnNav">Productos</NavLink>
                         <NavLink to={'/category/hair'} className="nav-link btnNav">Cuidado del cabello</NavLink>
                         <NavLink to={'/category/body'} className="nav-link btnNav">Cuidado corporal</NavLink>
-                        <NavLink to={'/login'} className="nav-link btnNav">Login</NavLink>
                         <CartWidget />
                     </Nav>
                 </Navbar.Collapse>

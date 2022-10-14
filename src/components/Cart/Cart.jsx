@@ -16,16 +16,19 @@ import {
   doc,
 } from "firebase/firestore";
 import moment from "moment";
+import swal from '@sweetalert/with-react';
+
 
 const Cart = () => {
+  
   const db = getFirestore();
-  const { cart, removeItem, clearCart } =
-    useContext(CartContext);
+  const { cart, removeItem, clearCart } = useContext(CartContext);
   const [showModal, setShowModal] = useState(false);
+  const [email2, setEmail2] = useState("");
   const [order, setOrder] = useState({
     buyer: {
       name: "",
-      phone: 0,
+      phone: "",
       email: "",
     },
     items: cart,
@@ -45,20 +48,31 @@ const Cart = () => {
     });
   }, [cart]);
 
-  // Manejo de la visibilidad del MODAL
-  const handleCloseModal = () => setShowModal(false);
-  const handleShowModal = () => setShowModal(true);
+  // Creo mensajes para el usuario
+  const showMessage = (type, title, text) => {
+    swal({
+      title: title,
+      text: text,
+      icon: type,
+      buttons: false,
+      timer: 5000,
+    });
+  }
 
   // Creación de la orden de compra
   const createOrder = () => {
     const queryOrders = collection(db, "orders");
     if (order.buyer.name === "") {
-      alert("Debe completar todos los campos solicitados");
-    } else if (order.buyer.email === "") {
-      alert("Debe completar todos los campos solicitados");
+      showMessage("error", "Todos los campos deben ser completados", false);
     } else if (order.buyer.phone === 0) {
-      alert("Debe completar todos los campos solicitados");
-    } else {
+      showMessage("error", "Todos los campos deben ser completados", false);
+    } else if (order.buyer.email === "") {
+      showMessage("error", "Todos los campos deben ser completados", false);
+    } else if (email2 === "") {
+      showMessage("error", "Todos los campos deben ser completados", false);
+    } else if (order.buyer.email !== email2)
+    showMessage("error", "Los emails deben coincidir", false);
+    else {
 
       // Actualizo el stock en la base de datos de firebase
       cart.forEach((element) => {
@@ -70,13 +84,11 @@ const Cart = () => {
       // Creo la orden de compra en firebase
       addDoc(queryOrders, order)
         .then(({ id }) => {
-          alert(
-            `Felicidades por tu compra, te enviaremos los datos de facturación por Mail.\nTu ID de compra es ${id}`
-          );
+          showMessage("success", `Felicidades por tu compra`, `Te enviaremos los datos de facturación por Mail.\nTu ID de compra es ${id}`);
           clearCart();
           setShowModal(false);
         })
-        .catch(() => alert("Hubo un problema con su compra"));
+        .catch(() => showMessage("error", "Hubo un problema con su compra", false));
     }
   };
 
@@ -90,6 +102,10 @@ const Cart = () => {
       },
     });
   };
+  
+  const handleOnChangeMail2 = (e) => {
+    setEmail2(e.target.value);
+  }
 
   return (
     <Container fluid className="cartContainer">
@@ -100,8 +116,6 @@ const Cart = () => {
           <NavLink to={"/"} className="btnProducts">
             Productos
           </NavLink>
-          <br />
-          <br />
         </div>
       ) : (
         cart.map((element) => (
@@ -139,28 +153,30 @@ const Cart = () => {
           </Container>
         ))
       )}
-      <div className="purchase">
-        <button className="btnProducts" onClick={handleShowModal}>
+
+      <div className={`${cart.length === 0 ? 'hide' : ''} purchase`}>
+        <button className="btnProducts" onClick={() => setShowModal(true)}>
           Finalizar compra
         </button>
       </div>
 
+      {/* Formulario de compra */}
       <Modal
         show={showModal}
-        onHide={handleCloseModal}
+        onHide={() => setShowModal(false)}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
         className="modalOrder"
+        backdrop="static"
       >
         <Modal.Header closeButton>
-          <Modal.Title>
-            <h1>Finalizar Compra</h1>
+          <Modal.Title className="text-center">
+            <h1>Finalizá la compra</h1>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h2>¡¡¡Muchas gracias por tu compra!!!</h2>
-          <h4>Por favor completá los datos para coordinar la entrega</h4>
+          <h4>Por favor completá los datos para que podamos coordinar la entrega</h4>
           <Container fluid className="modalForm">
             <label>Nombre y Apellido</label>
             <input
@@ -186,10 +202,18 @@ const Cart = () => {
               onChange={handleOnChange}
               className="modalInput"
             />
+            <label>Reingresar email</label>
+            <input
+              name="email2"
+              type="email"
+              value={email2}
+              onChange={handleOnChangeMail2}
+              className="modalInput"
+            />
           </Container>
         </Modal.Body>
         <Modal.Footer>
-          <button onClick={handleCloseModal} className="btnProducts btnCancel">
+          <button onClick={() => setShowModal(false)} className="btnProducts btnCancel">
             Cancelar
           </button>
           <button onClick={createOrder} className="btnProducts">
@@ -197,7 +221,7 @@ const Cart = () => {
           </button>
         </Modal.Footer>
       </Modal>
-    </Container>
+    </Container >
   );
 };
 

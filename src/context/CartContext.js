@@ -1,8 +1,10 @@
 import { createContext, useState, useEffect } from 'react';
 
+
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
+
     const [cart, setCart] = useState([]);
     const [artsAtCart, setArtsAtCart] = useState(0)
 
@@ -12,22 +14,27 @@ const CartProvider = ({ children }) => {
         cart.forEach(element => {
             arts += element.quantity;
         });
-        console.log(arts);
         setArtsAtCart(arts);
     }, [cart])
 
     // Incorporar un elemento al carrito
-    const addToCart = (name, items, price, img, item, stock) => {
+    const addToCart = (name, items, price, img, item, stock, showToast, showMessage) => {
         let itemExist = false;
         if (items > 0) {
-            for (const iterator of cart) {
+            for (const iterator of cart) { //recorro el carrito para verificar si existe
                 iterator.name === name
                     ? itemExist = true
                     : itemExist = false
             }
-            itemExist
-                ? alert('este producto ya existe en el carrito')
-                : setCart(cart.concat({ item, name, quantity: items, price, img, stock }));
+            if (itemExist) {
+                showMessage("error", "Este producto ya se encuentra en el carrito", false);
+            } else {
+                setCart(cart.concat({ item, name, quantity: items, price, img, stock }));
+                showToast(true);
+                setTimeout(() => {
+                    showToast(false)
+                }, 2000);
+            }
         }
     }
 
@@ -38,39 +45,6 @@ const CartProvider = ({ children }) => {
 
     // Vaciar el carrito de
     const clearCart = () => setCart([]);
-
-
-    // const incrementToCart = (itemProduct) => {
-    //     let index, filterCart=[];
-    //     console.log(itemProduct);
-    //     for (let x=0; x <= cart.length; x++) {
-    //         console.log(cart[x].item);
-    //         if (cart[x].item == itemProduct){
-    //             index = x;
-    //         }
-    //     }
-    //     let filterItem = cart.filter(element => element.item === itemProduct);
-    //     if (cart.length > 1) {
-    //         filterCart=cart.splice(index, 1);
-    //     } 
-    //     //console.log(`Cantidad: ${filterItem[0].quantity} - Stock: ${filterItem[0].stock}`);
-    //     console.log(filterCart);
-    //     filterItem[0].quantity < filterItem[0].stock
-    //         ? filterItem[0].quantity++
-    //         : alert ('No hay más productos en stock');
-    //     filterCart=filterCart.concat(filterItem);
-    //     setCart(filterCart);
-    // }
-
-    // const restToCart = (item) => {
-    //     let itemToRest = cart[cart.IndexOff(item)];
-    //     if (itemToRest>0) {
-
-    //     }
-    // }
-
-
-
 
     return (
         <CartContext.Provider value={{ addToCart, cart, removeItem, clearCart, artsAtCart }}>
