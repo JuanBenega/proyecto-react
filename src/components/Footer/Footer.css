@@ -7,7 +7,6 @@
 }
 
 .contFoot {
-    /* display: flex; */
     justify-content: space-between;
 }
 
@@ -30,14 +29,12 @@
     font-family:  'Poppins', sans-serif;
     display: flex;
     flex-direction: column;
-    /* margin-right: 3rem; */
     align-items: center;
 }
 
 .btnFoot {
     text-decoration: none;
     margin: 0 1rem;
-    /* padding: 0.5rem 1rem; */
     font-size: 1.3rem;
     font-weight: bold;
     width: auto;
@@ -53,9 +50,11 @@
     }
 
     .contFoot {
-        /* display: flex; */
         justify-content: center;
         flex-direction: column;
     }
 
+    .listFoot {
+        padding-top: 1rem;
+    }
 }

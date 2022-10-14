@@ -31,7 +31,6 @@ const Footer = () => {
                         <NavLink to={'/'} className="nav-link btnFoot">Productos</NavLink>
                         <NavLink to={'/category/hair'} className="nav-link btnFoot">Cuidado del cabello</NavLink>
                         <NavLink to={'/category/body'} className="nav-link btnFoot">Cuidado corporal</NavLink>
-                        <NavLink to={'/login'} className="nav-link btnFoot">Login</NavLink>
                     </ul>
                 </Nav>
                 <Navbar.Brand>
