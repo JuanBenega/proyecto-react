@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/JuanBenega/proyecto-react">
-    <img src="src/components/img/Logo.png" alt="Logo" width="80" height="80">
+    <img src="src/components/img/Logo.png" alt="Logo">
   </a>
 
   <h3 align="center">Cuerpo & Armonía - E-Commerce ReactJS Project</h3>
@@ -68,7 +68,7 @@ An e-commerce developed with ReactJS, using the Bootstrap CSS framework and Fire
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-<img src="src/components/img/Cuerpo&Armonia.gif" alt="gif" width="80" height="80">
+<img src="src/components/img/Cuerpo&Armonia.gif" alt="gif">
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
